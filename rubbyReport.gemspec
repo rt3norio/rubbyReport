@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
     s.email       = 'rt3norio@gmail.com'
     s.files       = ["lib/rubbyReport.rb", "lib/templates/basic.html.erb"]
     s.homepage    =
-      'https://rubygems.org/gems/rubbyReport'
+      'https://github.com/rt3norio/rubbyReport'
     s.license       = 'MIT'
     s.executables = ["rubbyReport"]
   end
