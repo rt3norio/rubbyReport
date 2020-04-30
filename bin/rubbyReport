@@ -1,23 +1,30 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require_relative '../lib/rubbyReport'
 require 'thor'
 
 class MyCLI < Thor
-  desc "generate", 'Generate report with .png files in current folder'
+  desc 'generate', 'Generate report with .png files in current folder'
   long_desc <<-LONGDESC
-    `Rubby Report will generate the report based on the name of the file, the order after the @ simbol
-    
-    examples filenames:
-    doing something here@1.png
-    doing other thing@2.png
-    third thing that has be done@3.png
-    
-    > from: Rodrigo Tenorio(rt3norio@gmail.com)
+    `Command line utility to generate reports based on images.
+
+    Rubby Report will generate the report based on the
+    name of the file, and the order after the @ simbol
+
+    examples filenames:\x5
+    doing something here@1.png\x5
+    doing other thing@2.png\x5
+    third thing that has be done@3.png\x5
+
+    \x5> from: Rodrigo Tenorio(rt3norio@gmail.com)
   LONGDESC
-  def generate()
+  option :key, type: :string, desc: 'Jira Key, or Anything related like that',default: ''
+  option :description, type: :string, desc: 'Task description or title',default: ''
+  option :template, type: :string, desc: 'name of the template to be used. ["basic"]', default: 'basic'
+  def generate
     r = RubbyReport.new
-    r.run
+    r.run(options[:description],options[:key], options[:template])
   end
 end
 
