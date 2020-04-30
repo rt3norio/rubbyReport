@@ -7,7 +7,7 @@ require 'thor'
 class MyCLI < Thor
   desc 'generate', 'Generate report with .png files in current folder'
   long_desc <<-LONGDESC
-    `Command line utility to generate reports based on images.
+    Command line utility to generate reports based on images.
 
     Rubby Report will generate the report based on the
     name of the file, and the order after the @ simbol

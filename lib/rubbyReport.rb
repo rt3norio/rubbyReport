@@ -14,19 +14,19 @@ class RubbyReport
         end
     end
     
-    def run
+    def run(description = "", key = "",template='basic')
         data = ReportData.new
         data.images_array =  @images_list.map do |img|
             [img.split('@')[-2], generate_base_64_from_img_to_src(img)]
         end
-        data.issue_description = 'descricao do que o ticket pedia'
-        data.date = Time.now        
-        data.issue_key = "TO-15492"
+        data.issue_description = description
+        data.issue_key = key
+        data.time = Time.now        
+        filename = key = '' ? "#{key}.html" : "report.html"
 
-
-        view = Report.new('basic', data)
-        File.write("report.html", view.render)
-    
+        view = Report.new(template, data)
+        File.write(filename, view.render)
+        puts "generated #{filename} file in current folder."
     end
 end
 
@@ -44,7 +44,7 @@ class Report
 end
 
 class ReportData
-    attr_accessor :issue_key, :issue_description, :date, :images_array
+    attr_accessor :issue_key, :issue_description, :time, :images_array
 end
 
 
