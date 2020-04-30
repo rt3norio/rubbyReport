@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Session Report</h1>
+
+    
+    <h2><%= @data.issue_key %></h2>
+    <h3><%= @data.issue_description %></h3>
+
+    <br/><br/>
+    <% @data.images_array.each do |img|%>
+    <h3><%=img[0]%></h3>
+    <br/>
+    <img src='<%=img[1]%>' />
+    <br/><br/><br/>
+    <% end %>
+  </body>
+</html>

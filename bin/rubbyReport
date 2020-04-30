@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/rubbyReport'
+require 'thor'
+
+class MyCLI < Thor
+  desc "generate", 'Generate report with .png files in current folder'
+  long_desc <<-LONGDESC
+    `Rubby Report will generate the report based on the name of the file, the order after the @ simbol
+    
+    examples filenames:
+    doing something here@1.png
+    doing other thing@2.png
+    third thing that has be done@3.png
+    
+    > from: Rodrigo Tenorio(rt3norio@gmail.com)
+  LONGDESC
+  def generate()
+    r = RubbyReport.new
+    r.run
+  end
+end
+
+MyCLI.start(ARGV)
