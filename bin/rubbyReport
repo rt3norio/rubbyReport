@@ -21,7 +21,7 @@ class MyCLI < Thor
   LONGDESC
   option :key, type: :string, desc: 'Jira Key, or Anything related like that',default: ''
   option :description, type: :string, desc: 'Task description or title',default: ''
-  option :template, type: :string, desc: 'name of the template to be used. ["basic"]', default: 'basic'
+  option :template, type: :string, desc: 'name of the template to be used. ["basic","natu"]', default: 'basic'
   def generate
     r = RubbyReport.new
     r.run(options[:description],options[:key], options[:template])
