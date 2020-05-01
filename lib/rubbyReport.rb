@@ -22,7 +22,7 @@ class RubbyReport
         data.issue_description = description
         data.issue_key = key
         data.time = Time.now        
-        filename = key = '' ? "#{key}.html" : "report.html"
+        filename = key == '' ? "#{key}.html" : "report.html"
 
         view = Report.new(template, data)
         File.write(filename, view.render)
