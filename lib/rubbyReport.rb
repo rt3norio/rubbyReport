@@ -17,12 +17,14 @@ class RubbyReport
     def run(description = "", key = "",template='basic')
         data = ReportData.new
         data.images_array =  @images_list.map do |img|
-            [img.split('@')[-2], generate_base_64_from_img_to_src(img)]
+            titulo_formatado = img.split('@')[-2]
+            titulo =  titulo_formatado.nil? ? img.split('.')[0] : titulo_formatado
+            [titulo, generate_base_64_from_img_to_src(img)]
         end
         data.issue_description = description
         data.issue_key = key
-        data.time = Time.now        
-        filename = key == '' ? "#{key}.html" : "report.html"
+        data.time = Time.now  
+        filename = key == "" ? "report.html" : "#{key}.html"
 
         view = Report.new(template, data)
         File.write(filename, view.render)
